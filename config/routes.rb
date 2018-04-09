@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
-  delete 'logout' => 'sessinos#destroy'
+  delete 'logout' => 'sessions#destroy'
   get 'admin' => 'users#admin'
   get 'users/index'
   resources :users
