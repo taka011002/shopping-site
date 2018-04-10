@@ -14,7 +14,8 @@ class AdminsController < ApplicationController
   end
 
   def admin_destroy
-    User.find(params[:id]).toggle!(:admin)
+    @admin = User.find_by(id: params[:id])
+    @admin.toggle!(:admin)
     flash[:success] = "管理者権限を変更しました"
     redirect_to admin_user_path
   end

@@ -6,8 +6,8 @@
     <li>
       <%= admin.name  %>
       <%= admin.email %>
-      <%= link_to "管理者権限の削除", admin_user_path , method: :post,
-                        data:{ cofirm: "よろしいでしょうか？"} %>
+      <%= link_to "管理者権限の削除", admin_user_path(id: admin[:id]) , method: :post,
+                        data:{ cofirm: "OK?"} %>
     </li>
     <% end %>
   <div class="add_admin"></div>
