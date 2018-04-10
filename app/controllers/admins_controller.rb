@@ -13,10 +13,21 @@ class AdminsController < ApplicationController
   def order
   end
 
-  def destroy
+  def admin_destroy
     User.find(params[:id]).toggle!(:admin)
-    flash[:success] = "User deleted"
-    redirect_to ardmin_user_path
+    flash[:success] = "管理者権限を変更しました"
+    redirect_to admin_user_path
+  end
+
+  def admin_create
+    @user = User.find_by(email: params[:user][:email])
+    if @user && !@user.admin?
+      @user.toggle!(:admin)
+      flash[:success] = "管理者権限を変更しました"
+    else
+      flash[:danger] ="ユーザーが存在しないか既に管理者です"
+      redirect_to admin_user_path
+    end
   end
 
   private
