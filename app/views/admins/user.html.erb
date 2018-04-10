@@ -4,22 +4,22 @@
   <ul class="users">
     <% @admin_users.each do |admin| %>
     <li>
-      <%= admin.name %>
-      <%= link_to "管理者権限の削除", admin_user_path , method: :put,
+      <%= admin.name  %>
+      <%= admin.email %>
+      <%= link_to "管理者権限の削除", admin_user_path , method: :post,
                         data:{ cofirm: "よろしいでしょうか？"} %>
     </li>
     <% end %>
   <div class="add_admin"></div>
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <p class="add_title"> 管理ユーザーの追加　</p>
-        <%= form_for(@user, url: admin_create_path) do |f| %>
-
-          <%= f.label :email %>
-          <%= f.email_field :email, class: 'form-control' %>
-
-          <%= f.submit "追加", class: "btn btn-primary" %>
+        <h1 class="add_title"> 管理ユーザーの追加　</h1>
+        <%= form_tag admin_create_path, :method　=> 'post' do %>
+        <p>登録済みユーザーのメールアドレス</p>
+        <%= text_field_tag :email, params[:email], class: "form-control" %>
+        <%= submit_tag "追加", class: "btn btn-primary" %>
         <% end %>
+
       </div>
     </div>
 

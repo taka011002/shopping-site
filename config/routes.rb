@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   get 'admin' => 'admins#admin'
   get 'admin/user' => 'admins#user'
-  put 'admin/user' => 'admins#admin_destroy'
-  put 'admin/create' => 'admin#admin_create'
+  post 'admin/user' => 'admins#admin_destroy'
+  post 'admin/create' => 'admins#admin_create'
   get 'admin/product' => 'admins#product'
   get 'admin/order' => 'admins#order'
   resources :users
