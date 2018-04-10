@@ -1,2 +1,12 @@
-<h1>Admins#user</h1>
-<p>Find me in app/views/admins/user.html.erb</p>
+<div class="admin_user_list"></div>
+  <h1>管理者ユーザー一覧</h1>
+
+  <ul class="users">
+    <% @admin_users.each do |user| %>
+    <li>
+      <%= user.name %>
+      <%= link_to "管理者権限の削除", user, method: :delete,
+                        data:{ cofirm: "よろしいでしょうか？"} %>
+    </li>
+    <% end %>
+  </ul>

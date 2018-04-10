@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-  get 'admin' => 'users#admin'
+  get 'admin' => 'admins#admin'
   get 'admin/user' => 'admins#user'
+  delete 'admin/user' => "admin#destroy"
   get 'admin/product' => 'admins#product'
   get 'admin/order' => 'admins#order'
   resources :users
