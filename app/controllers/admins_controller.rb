@@ -1,6 +1,6 @@
 class AdminsController < ApplicationController
   before_action :admin_user
-  
+
   def admin
   end
 
@@ -10,7 +10,7 @@ class AdminsController < ApplicationController
 
   def product
     @product = Product.new
-    @products = Product.all
+    @products = Product.paginate(page: params[:page])
   end
 
   def order

@@ -8,10 +8,17 @@ class ProductsController < ApplicationController
       redirect_to admin_product_path
     else
       flash[:danger] = "商品の登録に失敗しました"
-      @products = Product.all
+      @products = Product.paginate(page: params[:page])
       render "admins/product"
     end
   end
+
+  def destroy
+    Product.find(params[:id]).destroy
+    flash[:success] = "商品を削除しました"
+    redirect_to admin_product_path
+  end
+
 
   def index
   end
