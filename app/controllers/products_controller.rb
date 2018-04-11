@@ -19,6 +19,20 @@ class ProductsController < ApplicationController
     redirect_to admin_product_path
   end
 
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.update_attributes(product_params)
+      flash[:success] = "商品を編集しました"
+      redirect_to admin_product_path
+    else
+      render 'edit'
+    end
+  end
+
 
   def index
   end
