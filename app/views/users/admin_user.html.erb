@@ -15,7 +15,8 @@
         <td><%= admin.name  %></td>
         <td><%= admin.email %></td>
         <td><%= link_to "削除", admin_user_path(id: admin[:id]) ,
-                     method: :post,data:{ cofirm: "OK?"} %></td>
+                     method: :post,
+                    data:{ confirm: "管理者権限を削除してよろしいでしょうか？"} %></td>
       </tr>
     </tbody>
     <% end %>

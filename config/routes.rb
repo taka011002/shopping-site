@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   get 'admin' => 'admins#admin'
-  post 'admin/user' => 'admins#admin_destroy'
-  get 'admin/user' => 'admins#user'
-  post 'admin/create' => 'admins#admin_create'
-  get 'admin/product' => 'admins#product'
+  post 'admin/user' => 'users#admin_destroy'
+  get 'admin/user' => 'users#admin_user'
+  post 'admin/create' => 'users#admin_create'
+  get 'admin/product' => 'products#admin_index'
   get 'admin/order' => 'admins#order'
   resources :users
   resources :products

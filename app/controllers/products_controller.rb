@@ -1,5 +1,10 @@
 class ProductsController < ApplicationController
-  before_action :admin_user, only: [:create, :destroy]
+  before_action :admin_user, only: [:admin_index, :create, :destroy, :edit, :update]
+
+  def admin_index
+    @product = Product.new
+    @products = Product.paginate(page: params[:page])
+  end
 
   def create
     @product = Product.new(product_params)
@@ -9,7 +14,7 @@ class ProductsController < ApplicationController
     else
       flash[:danger] = "商品の登録に失敗しました"
       @products = Product.paginate(page: params[:page])
-      render "admins/product"
+      render 'admin_index'
     end
   end
 
@@ -43,4 +48,6 @@ class ProductsController < ApplicationController
       params.require(:product).permit(:name,
                 :price, :description, :main_image)
     end
+
+
 end
