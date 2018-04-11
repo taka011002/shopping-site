@@ -8,6 +8,8 @@ class AdminsController < ApplicationController
   end
 
   def product
+    @product = Product.new
+    @products = Product.all
   end
 
   def order
