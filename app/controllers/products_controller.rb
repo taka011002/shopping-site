@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      flash[:secces] = "商品を登録できました"
+      flash[:success] = "商品を登録できました"
       redirect_to admin_product_path
     else
       flash[:danger] = "商品の登録に失敗しました"
@@ -20,6 +20,6 @@ class ProductsController < ApplicationController
 
     def product_params
       params.require(:product).permit(:name,
-                :price, :description, :picture)
+                :price, :description, :main_image)
     end
 end

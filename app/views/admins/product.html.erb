@@ -1,9 +1,10 @@
 <h1>商品管理</h1>
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@product) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-
+      <p class="admin_product_title">商品の追加</p>
       <%= f.label :name,"商品名" %>
       <%= f.text_field :name %>
 
@@ -11,9 +12,9 @@
       <%= f.number_field :price %>
 
       <%= f.label :description,"商品説明" %>
-      <%= f.text_area :price %>
+      <%= f.text_area :description %>
 
-      <%= f.file_field :picture %>
+      <%= f.file_field :main_image %>
 
       <%= f.submit "追加", class: "btn btn-primary" %>
 
@@ -21,14 +22,29 @@
   </div>
 </div>
 
-<ul class="product_list">
-  <% @products.each do |product| %>
-  <li>
-    <%= product.name  %>
-    <%= product.description %>
-    <%= image_tag product.picture.url %>
-    <%= link_to "商品の編集", admin_user_path(id: admin[:id]) , method: :post　%>
-    <%= link_to "商品の削除", admin_user_path(id: admin[:id]) , method: :post　%>
-  </li>
-  <% end %>
-</ul>
+
+<div class="admin_product_list">
+  <p class="admin_product_title">商品一覧</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>商品名</th>
+        <th>商品説明</th>
+        <th>金額</th>
+        <th>画像</th>
+        <th>編集</th>
+        <th>削除</th>
+      </tr>
+    </thead>
+    <% @products.each do |product| %>
+    <tbody>
+      <td><%= product.name  %></td>
+      <td><%= product.description %></td>
+      <td><%= product.price%>円</td>
+      <td><%= image_tag(product.main_image)%></td>
+      <td>編集</td>
+      <td>削除</td>
+    </tbody>
+    <% end %>
+  </table>
+</div>

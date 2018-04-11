@@ -1,16 +1,25 @@
 <div class="admin_user_list"></div>
   <h1>管理者ユーザー一覧</h1>
 
-  <ul class="users">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>名前</th>
+        <th>メールアドレス</th>
+        <th>管理者権限の削除</th>
+      </tr>
+    </thead>
     <% @admin_users.each do |admin| %>
-    <li>
-      <%= admin.name  %>
-      <%= admin.email %>
-      <%= link_to "管理者権限の削除", admin_user_path(id: admin[:id]) , method: :post,
-                        data:{ cofirm: "OK?"} %>
-    </li>
+    <tbody>
+      <tr>
+        <td><%= admin.name  %></td>
+        <td><%= admin.email %></td>
+        <td><%= link_to "削除", admin_user_path(id: admin[:id]) ,
+                     method: :post,data:{ cofirm: "OK?"} %></td>
+      </tr>
+    </tbody>
     <% end %>
-  </ul>
+  </table>
   <div class="add_admin"></div>
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
@@ -23,5 +32,3 @@
 
       </div>
     </div>
-
-    

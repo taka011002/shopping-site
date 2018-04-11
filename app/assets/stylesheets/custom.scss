@@ -107,7 +107,7 @@ input {
   height: auto !important;
 }
 
-/*admin */
+/*admin-user */
 .add_admin{
   border-top: 1px solid black;
   margin-top: 50px;
@@ -115,4 +115,15 @@ input {
 }
 .add_title{
   text-align:center;
+}
+
+
+/* admin-product */
+.admin_product_title{
+  font-size: 30px;
+}
+.admin_product_list{
+  border-top: 1px solid black;
+  margin-top: 50px;
+  padding-top: 50px;
 }
