@@ -1,2 +1,16 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<h1>商品一覧</h1>
+<div class="products_list">
+  <div class="products">
+      <% @products.each do |product| %>
+      <div class="product">
+        <div class="content_image"><%= image_tag(product.main_image) %></div>
+        <div class="content_title"><%= product.name %></div>
+        <!-- <div class="content_description">
+                     <%= product.description %></div> -->
+        <div class="content_price"><%= product.price %>円</div>
+        <div>カートに入れる</div>
+      </div>
+      <% end %>
+  </div>
+  <%= will_paginate @products %>
+</div>

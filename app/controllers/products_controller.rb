@@ -1,6 +1,10 @@
 class ProductsController < ApplicationController
   before_action :admin_user, only: [:admin_index, :create, :destroy, :edit, :update]
 
+  def index
+    @products = Product.paginate(page: params[:page] ,per_page: 6)
+  end
+
   def admin_index
     @product = Product.new
     @products = Product.paginate(page: params[:page])
@@ -36,10 +40,6 @@ class ProductsController < ApplicationController
     else
       render 'edit'
     end
-  end
-
-
-  def index
   end
 
   private
