@@ -9,4 +9,11 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+
+
+  def cart(product)
+    cart_items.create(product_id: product.id)
+  end
+
+
 end

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       if current_user.admin?
       redirect_to admin_path
       else
-      redirect_to root_path
+      redirect_back_or products_path
       end
     else
       flash.now[:danger] = 'EmailかPasswordが間違っています'

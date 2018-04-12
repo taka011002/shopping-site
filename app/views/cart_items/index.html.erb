@@ -1,0 +1,21 @@
+<h1>ショッピングカート</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>画像</th>
+      <th></th>
+      <th>金額</th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @cart_items.each do |item| %>
+  <tbody>
+    <td><%= image_tag(item.main_image)%></td>
+    <td><%= item.name  %></td>
+    <td><%= item.price%>円</td>
+    <td><%= link_to "削除", cart_items ,
+                   method: :delete,
+                   data:{ confirm: "削除してよろしいでしょうか？"} %></td>
+  </tbody>
+  <% end %>
+</table>
