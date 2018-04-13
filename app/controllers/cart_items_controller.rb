@@ -2,6 +2,7 @@ class CartItemsController < ApplicationController
   before_action :logged_in_user
   def index
     @cart_items = current_user.cart_items.all
+    @cart_sum = current_user.products.sum(:price)
   end
 
 

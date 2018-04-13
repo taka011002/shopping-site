@@ -8,17 +8,11 @@
         <!-- <div class="content_description">
                      <%= product.description %></div> -->
         <div class="content_price"><%= product.price %>円</div>
-        <% if current_user %>
-          <div><%= form_for(current_user.cart_items.build) do |f| %>
+          <div><%= form_for(product.cart_items.build) do |f| %>
             <div><%= hidden_field_tag :product_id, product.id %></div>
             <%= f.submit "カートに入れる", class: "btn btn-primary" %>
             <% end %>
           </div>
-          <% else %>
-            <div>
-              <%= link_to "カートに入れる", login_path %>
-            </div>
-        <% end %>
       </div>
       <% end %>
   </div>
