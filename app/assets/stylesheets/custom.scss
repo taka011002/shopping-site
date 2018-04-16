@@ -97,6 +97,22 @@ footer {
   }
 }
 
+// root
+.jumbotron{
+  h1{
+    color: #ffffff;
+  }
+  background-image: url("shadows.jpg");
+  background-size: cover;
+}
+
+.home_title{
+  padding:30px;
+}
+.home_content{
+  padding:30px;
+  color: #ffffff;
+}
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -129,4 +145,9 @@ input {
   border-top: 1px solid black;
   margin-top: 50px;
   padding-top: 50px;
+}
+
+/* will_paginate */
+.text-center{
+  text-align: center;
 }

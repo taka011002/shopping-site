@@ -11,16 +11,25 @@
       </thead>
       <% @order_items.each do |item| %>
       <tbody>
-        <td><%= image_tag(item.main_image)%></td>
+        <td><%= image_tag(item.main_image.thumb.url)%></td>
         <td><%= item.name  %></td>
         <td><%= item.price%>円</td>
       </tbody>
       <% end %>
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th>合計金額</th>
+        </tr>
+      </thead>
+      <tbody>
+        <td></td>
+        <td></td>
+        <td><%= @order_sum %>円</td>
+      </tbody>
     </table>
-
   </div>
-  合計金額:<%= @order_sum %>円
-
   <%= form_for @order do |f| %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <% @order_items.each do |product| %>
@@ -29,7 +38,11 @@
         <%= c.hidden_field :price, :value => product.price %>
       <% end %>
     <% end %>
-    <%= f.submit "注文する", class: "btn btn-primary" %>
+    <%= f.submit "注文する", class: "btn btn-primary",
+                            data: { confirm:"本当に注文しますか？",
+                                    cancel:"いいえ",
+                                    commit:"はい",
+                                    title: "注文の確認"} %>
   <% end %>
 
 </div>

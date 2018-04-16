@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
 
   private
      def admin_user_now
-       unless current_user && current_user.admin?
+       unless logged_in? && admin?
          flash[:danger] = "管理者権限がありません"
-         redirect_to root_path
+         redirect_back(fallback_location: root_path)
        end
      end
 

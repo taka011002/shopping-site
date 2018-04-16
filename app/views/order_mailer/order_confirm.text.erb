@@ -1,0 +1,9 @@
+ご注文の確認
+<%= @order.user.name %>様
+
+ご注文商品一覧
+<% @order_items.each do |item| %>
+  商品名: <%= item.product.name  %>
+  商品金額: <%= item.product.price%>円
+<% end %>
+合計金額: <%= @order_sum %> 円

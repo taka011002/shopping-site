@@ -1,5 +1,6 @@
 class CartItemsController < ApplicationController
   before_action :logged_in_user
+  #before_action :store_location, only:[:index]
   def index
     @cart_items = current_user.cart_items.all
     @cart_sum = current_user.products.sum(:price)
@@ -13,7 +14,7 @@ class CartItemsController < ApplicationController
       flash[:success] = "カートに追加しました"
       redirect_to products_path
     #else flash[:danger] = "既にカート入っています"
-      #redirect_to products_path
+      #redirect_back(fallback_location: products_path)
     #end
   end
 

@@ -42,11 +42,13 @@
       <td><%= product.name  %></td>
       <td><%= product.description %></td>
       <td><%= product.price%>円</td>
-      <td><%= image_tag(product.main_image)%></td>
-      <td><%= link_to "編集", edit_product_path(product)%></td>
+      <td><%= image_tag(product.main_image.thumb.url)%></td>
+      <td><%= link_to "編集", edit_product_path(product),
+                                    class: "btn btn-dark"%></td>
       <td><%= link_to "削除", product ,
                      method: :delete,
-                     data:{ confirm: "削除してよろしいでしょうか？"} %></td>
+                     data:{ confirm: "削除してよろしいでしょうか？"},
+                     class: "btn btn-danger" %></td>
     </tbody>
     <% end %>
   </table>

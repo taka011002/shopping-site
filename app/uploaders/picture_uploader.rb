@@ -1,6 +1,6 @@
 class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-   process resize_to_limit: [200, 200]
+   process resize_to_limit: [600, 600]
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -37,7 +37,7 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
    version :thumb do
-     process resize_to_limit: [200, 200]
+     process resize_to_limit: [350, 350]
    end
 
   # Add a white list of extensions which are allowed to be uploaded.

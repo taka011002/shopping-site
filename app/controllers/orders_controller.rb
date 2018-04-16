@@ -10,15 +10,22 @@ class OrdersController < ApplicationController
   end
 
   def admin_index
-    @orders = Order.paginate(page: params[:page])
+    @orders = Order.paginate(page: params[:page], per_page: 5)
   end
 
   def create
      order = Order.new(order_params)
      order.save
+     OrderMailer.order_confirm(order).deliver_now
      current_user.cart_items.destroy_all
-     flash[:success] = "注文に成功しました"
+     flash[:info] = "商品を注文しました"
      redirect_to root_path
+  end
+
+  def update
+    order = Order.find(params[:id])
+    order.update(status: "#{order.status + 1}")
+    redirect_to admin_order_path
   end
 
   private

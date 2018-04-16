@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
   before_action :admin_user_now, only: [:admin_user, :admin_destroy, :admin_create]
-  before_action :logged_in_user, only: [:admin_user, :admin_destroy, :admin_create]
+
   def new
     @user = User.new
+  end
+
+  def orders
+    @orders = current_user.orders.paginate(page: params[:page], per_page: 5)
   end
 
   def create
