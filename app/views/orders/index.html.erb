@@ -1,0 +1,35 @@
+<h1>注文のご確認</h1>
+<div>
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>画像</th>
+          <th>商品名</th>
+          <th>金額</th>
+        </tr>
+      </thead>
+      <% @order_items.each do |item| %>
+      <tbody>
+        <td><%= image_tag(item.main_image)%></td>
+        <td><%= item.name  %></td>
+        <td><%= item.price%>円</td>
+      </tbody>
+      <% end %>
+    </table>
+
+  </div>
+  合計金額:<%= @order_sum %>円
+
+  <%= form_for @order do |f| %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <% @order_items.each do |product| %>
+      <%= f.fields_for :order_items do |c| %>
+        <%= c.hidden_field :product_id, :value => product.id %>
+        <%= c.hidden_field :price, :value => product.price %>
+      <% end %>
+    <% end %>
+    <%= f.submit "注文する", class: "btn btn-primary" %>
+  <% end %>
+
+</div>

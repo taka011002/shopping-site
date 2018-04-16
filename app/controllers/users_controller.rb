@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :admin_user , only: [:admin_user, :admin_destroy, :admin_create]
-
+  before_action :admin_user_now, only: [:admin_user, :admin_destroy, :admin_create]
+  before_action :logged_in_user, only: [:admin_user, :admin_destroy, :admin_create]
   def new
     @user = User.new
   end
@@ -47,6 +47,12 @@ class UsersController < ApplicationController
                                  :password_confirmation)
   end
 
+  # def admin_user
+  #        unless current_user && current_user.admin?
+  #          flash[:danger] = "管理者権限がありません"
+  #          redirect_to root_path
+  #        end
+  #    end
 
 
 end

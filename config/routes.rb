@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   post 'admin/user' => 'users#admin_destroy'
   post 'admin/create' => 'users#admin_create'
   get 'admin/product' => 'products#admin_index'
-  get 'admin/order' => 'admins#order'
-  resources :users do
-  end
+  get 'admin/order' => 'orders#admin_index'
+  resources :users
   resources :products
   resources :cart_items, only: [:index, :create, :destroy]
+  resources :orders ,only: [:index, :create, :destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
