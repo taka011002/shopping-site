@@ -2,21 +2,21 @@
 
 <p><%= @order.user.name%>様</p>
 <table class="table">
-      <thead>
-        <tr>
-          <th>画像</th>
-          <th>商品名</th>
-          <th>金額</th>
-        </tr>
-      </thead>
-      <tfoot>
-        <td>合計金額:<%= @order_sum %>円</td>
-      </tfoot>
-      <% @order_items.each do |item| %>
-      <tbody>
-        <td><%= image_tag(item.product.main_image)%></td>
-        <td><%= item.product.name  %></td>
-        <td><%= item.product.price%>円</td>
-      </tbody>
-      <% end %>
-    </table>
+  <thead>
+    <tr>
+      <th>画像</th>
+      <th>商品名</th>
+      <th>金額</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <td>合計金額:<%= @order_sum %>円</td>
+  </tfoot>
+  <% @order_items.each do |item| %>
+  <tbody>
+    <td><%= image_tag(item.product.main_image)%></td>
+    <td><%= item.product.name  %></td>
+    <td><%= item.product.price%>円</td>
+  </tbody>
+  <% end %>
+</table>

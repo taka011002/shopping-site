@@ -1,13 +1,14 @@
 class ProductsController < ApplicationController
-  before_action :admin_user_now, only: [:admin_index, :create, :destroy, :edit, :update]
+  before_action :admin_user_now, only: [:admin_index, :create,
+                                              :destroy, :edit, :update]
 
   def index
-    @products = Product.paginate(page: params[:page] ,per_page: 6)
+    @products = Product.paginate(page: params[:page],per_page: 6)
   end
 
   def admin_index
     @product = Product.new
-    @products = Product.paginate(page: params[:page])
+    @products = Product.paginate(page: params[:page],per_page: 10)
   end
 
   def show

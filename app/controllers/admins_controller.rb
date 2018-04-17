@@ -4,7 +4,4 @@ class AdminsController < ApplicationController
   def admin
   end
 
-  def order
-  end
-
 end

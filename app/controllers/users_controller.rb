@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :admin_user_now, only: [:admin_user, :admin_destroy, :admin_create]
+  before_action :admin_user_now, only: [:admin_user, :admin_destroy,
+                                                        :admin_create]
 
   def new
     @user = User.new
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "どうぞお買い物をお楽しみください"
+      flash[:success] = "ようこそSHOPPERへ！ どうぞお買い物をお楽しみください"
       log_in @user
       redirect_to root_path
     else
@@ -20,18 +21,8 @@ class UsersController < ApplicationController
     end
   end
 
-  def index
-  end
-
   def admin_user
     @admin_users = User.where(admin: "t")
-  end
-
-  def admin_destroy
-    @admin = User.find_by(id: params[:id])
-    @admin.toggle!(:admin)
-    flash[:success] = "管理者権限を変更しました"
-    redirect_to admin_user_path
   end
 
   def admin_create
@@ -45,18 +36,17 @@ class UsersController < ApplicationController
       redirect_to admin_user_path
   end
 
-  private
-  def user_params
-    params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
+  def admin_destroy
+    @admin = User.find_by(id: params[:id])
+    @admin.toggle!(:admin)
+    flash[:success] = "管理者権限を変更しました"
+    redirect_to admin_user_path
   end
 
-  # def admin_user
-  #        unless current_user && current_user.admin?
-  #          flash[:danger] = "管理者権限がありません"
-  #          redirect_to root_path
-  #        end
-  #    end
-
+  private
+    def user_params
+      params.require(:user).permit(:name, :email, :password,
+                                   :password_confirmation)
+    end
 
 end

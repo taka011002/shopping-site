@@ -1,56 +1,6 @@
+<% provide(:button_text,'追加') %>
 <h1>商品管理</h1>
-
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@product) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-      <p class="admin_product_title">商品の追加</p>
-      <%= f.label :name,"商品名" %>
-      <%= f.text_field :name, class: 'form-control'  %>
-
-      <%= f.label :price,"金額" %>
-      <%= f.number_field :price, class: 'form-control'  %>
-
-      <%= f.label :description,"商品説明" %>
-      <%= f.text_area :description, class: 'form-control'  %>
-
-      <%= f.file_field :main_image, class: 'form-control'  %>
-
-      <%= f.submit "追加", class: "btn btn-primary" %>
-
-    <% end %>
-  </div>
-</div>
-
-
+  <%= render 'form' %>
 <div class="admin_product_list">
-  <p class="admin_product_title">商品一覧</p>
-  <%= will_paginate @products %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>商品名</th>
-        <th>商品説明</th>
-        <th>金額</th>
-        <th>画像</th>
-        <th>編集</th>
-        <th>削除</th>
-      </tr>
-    </thead>
-    <% @products.each do |product| %>
-    <tbody>
-      <td><%= product.name  %></td>
-      <td><%= product.description %></td>
-      <td><%= product.price%>円</td>
-      <td><%= image_tag(product.main_image.thumb.url)%></td>
-      <td><%= link_to "編集", edit_product_path(product),
-                                    class: "btn btn-dark"%></td>
-      <td><%= link_to "削除", product ,
-                     method: :delete,
-                     data:{ confirm: "削除してよろしいでしょうか？"},
-                     class: "btn btn-danger" %></td>
-    </tbody>
-    <% end %>
-  </table>
-  <%= will_paginate @products %>
+  <%= render 'admin_product_list' %>
 </div>

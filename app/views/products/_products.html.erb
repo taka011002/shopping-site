@@ -1,0 +1,21 @@
+<div class="products　card-deck">
+  <% @products.each do |product| %>
+  <div class="product card">
+    <div class="card-img-top">
+      <%= link_to image_tag(product.main_image.thumb.url),product %>
+    </div>
+    <div clas="card-body">
+      <h5 class="content_title card-body">
+        <%= link_to product.name,product %>
+      </h5>
+      <p class="content_price card-text"><%= product.price %>円</p>
+      <div class="cart_add">
+        <%= form_for(product.cart_items.build) do |f| %>
+        <%= hidden_field_tag :product_id, product.id %>
+        <%= f.submit "カートに入れる", class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

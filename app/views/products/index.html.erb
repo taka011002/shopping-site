@@ -1,30 +1,7 @@
 <h1>商品一覧</h1>
 <div class="products_list">
-  <div class="products　card-deck">
-      <% @products.each do |product| %>
-      <div class="product card">
-        <div class="card-img-top">
-          <%= link_to image_tag(product.main_image.thumb.url),product %>
-        </div>
-        <div clas="card-body">
-          <h5 class="content_title card-body">
-            <%= link_to product.name,product %>
-          </h5>
-          <!-- <div class="content_description">
-                       <%= product.description %></div> -->
-          <p class="content_price card-text"><%= product.price %>円</p>
-          <div>
-            <%= form_for(product.cart_items.build) do |f| %>
-            <%= hidden_field_tag :product_id, product.id %>
-            <%= f.submit "カートに入れる", class: "btn btn-success" %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <% end %>
-  </div>
- </div>
- </div>
+  <%= render 'products' %>
+</div>
   <div class="text-center">
     <%= will_paginate @products %>
   </div>
