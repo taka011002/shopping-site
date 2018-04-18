@@ -3,7 +3,9 @@ class ProductsController < ApplicationController
                                               :destroy, :edit, :update]
 
   def index
-    @products = Product.paginate(page: params[:page],per_page: 6)
+    #@products = Product.paginate(page: params[:page],per_page: 6)
+    @search = Product.ransack(params[:q])
+    @products = @search.result(distinct: true).paginate(page: params[:page],per_page: 6)
   end
 
   def admin_index

@@ -1,0 +1,5 @@
+<%= search_form_for @search do |f| %>
+  <%= f.label :name_cont, "商品検索: 商品名" %>
+  <%= f.search_field :name_cont , class: "form-control"%>
+  <%= f.submit "検索", class: "btn btn-info"  %>
+<% end %>
