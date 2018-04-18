@@ -6,6 +6,11 @@ class OrderMailer < ApplicationMailer
   #   en.order_mailer.order_confirm.subject
   #
   def order_confirm(order)
+    #attachments.inline['image.jpg'] = File.read('')
+    order.product.each do |image|
+      attachments.inline[image.main_image_identifier] = File.read(image.main_image.thumb.current_path)
+    end
+
     @order = order
     @order_items = order.order_items.all
     @order_sum = order.order_items.sum(:price)

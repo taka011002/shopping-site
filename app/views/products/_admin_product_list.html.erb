@@ -13,7 +13,7 @@
   </thead>
   <% @products.each do |product| %>
   <tbody>
-    <td><%= product.name  %></td>
+    <td><%= link_to product.name,product %></td>
     <td><%= product.description %></td>
     <td><%= product.price%>円</td>
     <td><%= image_tag(product.main_image.thumb.url)%></td>
