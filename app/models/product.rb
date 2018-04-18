@@ -3,6 +3,9 @@ class Product < ApplicationRecord
   has_many :users, through: :cart_items
   has_many :order_items, dependent: :destroy
   has_many :orders, through: :order_items
+  #has_many :favorites, dependent: :destroy
+  #has_many :users, through: :favorites
+
   validates :name, presence: true
   validates :price, presence: true
   validates :description, presence: true
