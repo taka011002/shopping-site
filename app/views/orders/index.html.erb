@@ -30,6 +30,8 @@
       </tbody>
     </table>
   </div>
+  <div class="cart">
+  <div class="cart_btn pull-right">
   <%= form_for @order do |f| %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <% @order_items.each do |product| %>
@@ -38,11 +40,13 @@
         <%= c.hidden_field :price, :value => product.price %>
       <% end %>
     <% end %>
-    <%= f.submit "注文する", class: "btn btn-primary",
+
+    <%= f.submit "注文する", class: "btn btn-primary btn-lg",
                             data: { confirm:"本当に注文しますか？",
                                     cancel:"いいえ",
                                     commit:"はい",
                                     title: "注文の確認"} %>
   <% end %>
-
+  </div>
+  </div>
 </div>
