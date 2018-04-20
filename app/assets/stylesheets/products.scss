@@ -28,10 +28,11 @@
 
 .Photo img{
   object-fit: fill;
+  overflow: hidden;
   // width: 600px;
   // height: 600px;
-  margin: auto;
-  text-align: center;
+  // margin: auto;
+  // text-align: center;
   // overflow: hidden;
   // position: relative;
 }
