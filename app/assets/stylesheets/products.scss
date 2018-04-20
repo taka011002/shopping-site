@@ -20,16 +20,16 @@
 }
 
 .goodsLeft{
-  width: 650px;
+  // width: 650px;
   height: 650px;
-  float: left;
   z-index: 30;
   position: relative;
 }
 
-.Photo{
-  width: 600px;
-  height: 600px;
+.img{
+  object-fit: fill;
+  // width: 600px;
+  // height: 600px;
   margin: auto;
   text-align: center;
   overflow: hidden;
@@ -37,9 +37,8 @@
 }
 
 .goodsRight{
-  float: right;
   margin: 0;
-  width: 450px;
+  // width: 450px;
   position: relative;
 }
 .goods{
