@@ -1,4 +1,7 @@
 <div class="products　card-deck">
+  <% if @products == nil %>
+  <p>検索結果</p>
+  <% else %>
   <% @products.each do |product| %>
   <div class="product card">
     <div class="card-img-top">
@@ -17,5 +20,6 @@
       </div>
     </div>
   </div>
+  <% end %>
   <% end %>
 </div>

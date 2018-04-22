@@ -3,7 +3,7 @@
   <div class="order panel panel-default">
     <div class="panel-heading">
       <p>注文番号:<%= order.id %></p>
-      <p>注文日時:<%= order.created_at %></p>
+      <p>注文日時:<%= simple_time(order[:created_at]) %></p>
     </div>
     <div class="panel-body">
       <table class="table">

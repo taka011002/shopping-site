@@ -10,8 +10,6 @@ class OrdersController < ApplicationController
   end
 
   def admin_index
-    # @search = Order.ransack(params[:q])
-    # @orders = @search.result(distinct: true).paginate(page: params[:page],per_page: 6)
     @orders = Order.paginate(page: params[:page], per_page: 5)
   end
 

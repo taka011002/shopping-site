@@ -9,9 +9,6 @@
       <div class="goodsName">
         <h1><%= @product.name %></h1>
       </div>
-      <div class="description">
-        <h5><%= @product.description %></h5>
-      </div>
       <div class="price">
         <h2>価格　　　　　<%= @product.price %>円</h2>
       </div>
@@ -20,6 +17,9 @@
         <%= hidden_field_tag :product_id, @product.id %>
         <%= f.submit "カートに入れる", class: "btn btn-success" %>
         <% end %>
+      </div>
+      <div class="description">
+        <h5><%= @product.description %></h5>
       </div>
     </div>
   </div>
