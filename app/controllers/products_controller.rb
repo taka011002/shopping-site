@@ -56,5 +56,4 @@ class ProductsController < ApplicationController
                 :price, :description, :main_image)
     end
 
-
 end

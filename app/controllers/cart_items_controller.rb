@@ -1,7 +1,7 @@
 class CartItemsController < ApplicationController
   before_action :logged_in_user
   def index
-    @cart_items = current_user.cart_items.all
+    @cart_items = current_user.cart_items.includes(:product).all
     @cart_sum = current_user.products.sum(:price)
   end
 
@@ -14,7 +14,7 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
-    cart = CartItem.find(params[:id]).destroy
+    CartItem.find(params[:id]).destroy
     redirect_to cart_items_path
   end
 
